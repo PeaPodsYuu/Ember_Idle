@@ -1,0 +1,288 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scenes/Shop/Shop.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Shop/Price.gd" type="Script" id=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+
+[sub_resource type="DynamicFontData" id=2]
+font_path = "res://Misc/Font/Raleway-SemiBold.ttf"
+
+[sub_resource type="DynamicFont" id=3]
+size = 24
+font_data = SubResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.541176, 0.298039, 0.298039, 1 )
+
+[node name="Shop" type="Panel"]
+margin_right = 1600.0
+margin_bottom = 900.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 325.0, 275.0, 100.0, 250.0, 175.0 ],
+"_edit_vertical_guides_": [ 555.0, 100.0 ]
+}
+
+[node name="Building1" type="Panel" parent="."]
+margin_left = 75.0
+margin_top = 75.0
+margin_right = 555.0
+margin_bottom = 275.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="Icon" type="Panel" parent="Building1"]
+margin_left = 25.0
+margin_top = 25.0
+margin_right = 184.0
+margin_bottom = 175.0
+
+[node name="Price" type="Label" parent="Building1"]
+margin_left = 184.0
+margin_top = 25.0
+margin_right = 480.0
+margin_bottom = 115.0
+custom_fonts/font = SubResource( 3 )
+text = "Flint and Steel"
+align = 1
+valign = 1
+script = ExtResource( 2 )
+
+[node name="Button" type="Button" parent="Building1"]
+margin_left = 230.0
+margin_top = 115.0
+margin_right = 430.0
+margin_bottom = 175.0
+text = "BUY"
+
+[node name="Building2" type="Panel" parent="."]
+margin_left = 75.0
+margin_top = 275.0
+margin_right = 555.0
+margin_bottom = 475.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="Icon" type="Panel" parent="Building2"]
+margin_left = 25.0
+margin_top = 25.0
+margin_right = 184.0
+margin_bottom = 175.0
+
+[node name="Price" type="Label" parent="Building2"]
+margin_left = 184.0
+margin_top = 25.0
+margin_right = 480.0
+margin_bottom = 115.0
+custom_fonts/font = SubResource( 3 )
+text = "Building Name"
+align = 1
+valign = 1
+
+[node name="Button" type="Button" parent="Building2"]
+margin_left = 230.0
+margin_top = 115.0
+margin_right = 430.0
+margin_bottom = 175.0
+
+[node name="Building3" type="Panel" parent="."]
+margin_left = 75.0
+margin_top = 475.0
+margin_right = 555.0
+margin_bottom = 675.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="Icon" type="Panel" parent="Building3"]
+margin_left = 25.0
+margin_top = 25.0
+margin_right = 184.0
+margin_bottom = 175.0
+
+[node name="Price" type="Label" parent="Building3"]
+margin_left = 184.0
+margin_top = 25.0
+margin_right = 480.0
+margin_bottom = 115.0
+custom_fonts/font = SubResource( 3 )
+text = "Building Name"
+align = 1
+valign = 1
+
+[node name="Button" type="Button" parent="Building3"]
+margin_left = 230.0
+margin_top = 115.0
+margin_right = 430.0
+margin_bottom = 175.0
+
+[node name="Building4" type="Panel" parent="."]
+margin_left = 555.0
+margin_top = 75.0
+margin_right = 1035.0
+margin_bottom = 275.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="Icon" type="Panel" parent="Building4"]
+margin_left = 25.0
+margin_top = 25.0
+margin_right = 184.0
+margin_bottom = 175.0
+
+[node name="Price" type="Label" parent="Building4"]
+margin_left = 184.0
+margin_top = 25.0
+margin_right = 480.0
+margin_bottom = 115.0
+custom_fonts/font = SubResource( 3 )
+text = "Building Name"
+align = 1
+valign = 1
+
+[node name="Button" type="Button" parent="Building4"]
+margin_left = 230.0
+margin_top = 115.0
+margin_right = 430.0
+margin_bottom = 175.0
+
+[node name="Building5" type="Panel" parent="."]
+margin_left = 555.0
+margin_top = 275.0
+margin_right = 1035.0
+margin_bottom = 475.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="Icon" type="Panel" parent="Building5"]
+margin_left = 25.0
+margin_top = 25.0
+margin_right = 184.0
+margin_bottom = 175.0
+
+[node name="Price" type="Label" parent="Building5"]
+margin_left = 184.0
+margin_top = 25.0
+margin_right = 480.0
+margin_bottom = 115.0
+custom_fonts/font = SubResource( 3 )
+text = "Building Name"
+align = 1
+valign = 1
+
+[node name="Button" type="Button" parent="Building5"]
+margin_left = 230.0
+margin_top = 115.0
+margin_right = 430.0
+margin_bottom = 175.0
+
+[node name="Building6" type="Panel" parent="."]
+margin_left = 555.0
+margin_top = 475.0
+margin_right = 1035.0
+margin_bottom = 675.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="Icon" type="Panel" parent="Building6"]
+margin_left = 25.0
+margin_top = 25.0
+margin_right = 184.0
+margin_bottom = 175.0
+
+[node name="Price" type="Label" parent="Building6"]
+margin_left = 184.0
+margin_top = 25.0
+margin_right = 480.0
+margin_bottom = 115.0
+custom_fonts/font = SubResource( 3 )
+text = "Building Name"
+align = 1
+valign = 1
+
+[node name="Button" type="Button" parent="Building6"]
+margin_left = 230.0
+margin_top = 115.0
+margin_right = 430.0
+margin_bottom = 175.0
+
+[node name="Building7" type="Panel" parent="."]
+margin_left = 1035.0
+margin_top = 75.0
+margin_right = 1515.0
+margin_bottom = 275.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="Icon" type="Panel" parent="Building7"]
+margin_left = 25.0
+margin_top = 25.0
+margin_right = 184.0
+margin_bottom = 175.0
+
+[node name="Price" type="Label" parent="Building7"]
+margin_left = 184.0
+margin_top = 25.0
+margin_right = 480.0
+margin_bottom = 115.0
+custom_fonts/font = SubResource( 3 )
+text = "Building Name"
+align = 1
+valign = 1
+
+[node name="Button" type="Button" parent="Building7"]
+margin_left = 230.0
+margin_top = 115.0
+margin_right = 430.0
+margin_bottom = 175.0
+
+[node name="Building8" type="Panel" parent="."]
+margin_left = 1035.0
+margin_top = 275.0
+margin_right = 1515.0
+margin_bottom = 475.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="Icon" type="Panel" parent="Building8"]
+margin_left = 25.0
+margin_top = 25.0
+margin_right = 184.0
+margin_bottom = 175.0
+
+[node name="Price" type="Label" parent="Building8"]
+margin_left = 184.0
+margin_top = 25.0
+margin_right = 480.0
+margin_bottom = 115.0
+custom_fonts/font = SubResource( 3 )
+text = "Building Name"
+align = 1
+valign = 1
+
+[node name="Button" type="Button" parent="Building8"]
+margin_left = 230.0
+margin_top = 115.0
+margin_right = 430.0
+margin_bottom = 175.0
+
+[node name="Ascension" type="Panel" parent="."]
+margin_left = 1035.0
+margin_top = 475.0
+margin_right = 1515.0
+margin_bottom = 675.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="BottomBar" type="Panel" parent="."]
+margin_top = 750.0
+margin_right = 1600.0
+margin_bottom = 900.0
+custom_styles/panel = SubResource( 4 )
+
+[node name="Main" type="Button" parent="BottomBar"]
+margin_left = 600.0
+margin_right = 950.0
+margin_bottom = 150.0
+text = "Main"
+
+[connection signal="pressed" from="Building1/Button" to="." method="_on_Button1_pressed"]
+[connection signal="pressed" from="Building2/Button" to="." method="_on_Button2_pressed"]
+[connection signal="pressed" from="Building3/Button" to="." method="_on_Button3_pressed"]
+[connection signal="pressed" from="Building4/Button" to="." method="_on_Button4_pressed"]
+[connection signal="pressed" from="Building5/Button" to="." method="_on_Button5_pressed"]
+[connection signal="pressed" from="Building6/Button" to="." method="_on_Button6_pressed"]
+[connection signal="pressed" from="Building7/Button" to="." method="_on_Button7_pressed"]
+[connection signal="pressed" from="Building8/Button" to="." method="_on_Button8_pressed"]
+[connection signal="pressed" from="BottomBar/Main" to="." method="_on_Main_pressed"]
