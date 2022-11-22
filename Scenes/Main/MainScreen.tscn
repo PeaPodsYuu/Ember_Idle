@@ -195,6 +195,13 @@ margin_right = 1948.0
 margin_bottom = 1060.0
 rect_scale = Vector2( 0.8, 0.8 )
 
+[node name="LineEdit" type="LineEdit" parent="."]
+margin_left = 47.0
+margin_top = 59.0
+margin_right = 235.0
+margin_bottom = 140.0
+
 [connection signal="pressed" from="ClickerDisplay/Clicker" to="TopBar/Currency" method="_on_Clicker_pressed"]
 [connection signal="pressed" from="BottomBar/Upgrades" to="." method="_on_Upgrades_pressed"]
 [connection signal="pressed" from="BottomBar/Buildings" to="." method="_on_Buildings_pressed"]
+[connection signal="text_entered" from="LineEdit" to="TopBar/Currency" method="_on_LineEdit_text_entered"]

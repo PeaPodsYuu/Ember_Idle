@@ -339,7 +339,7 @@ text = "Main"
 [connection signal="pressed" from="Building2/Button" to="." method="_on_Button2_pressed"]
 [connection signal="pressed" from="Building3/Button" to="." method="_on_Button3_pressed"]
 [connection signal="pressed" from="Building4/Button" to="." method="_on_Button4_pressed"]
-[connection signal="pressed" from="Building5A/Button" to="." method="_on_Button5_pressed"]
+[connection signal="pressed" from="Building5A/Button" to="." method="_on_Button5A_pressed"]
 [connection signal="pressed" from="Building5B/Button" to="." method="_on_Button5_pressed"]
 [connection signal="pressed" from="Building6A/Button" to="." method="_on_Button6_pressed"]
 [connection signal="pressed" from="Building6B/Button" to="." method="_on_Button5_pressed"]

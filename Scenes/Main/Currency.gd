@@ -88,12 +88,20 @@ func changeMoney(target,n,type):
 			addexponent -= 1
 		else:
 			addvalue = float(addvalue) / 10.00
+	if type == "InverseSecond":
+		if addexponent > 1:
+			addexponent += 2
+		else:
+			addvalue = float(addvalue) * 100.00
 	
 	if currentexponent > addexponent:
 		currentvalue += addvalue / pow(10, (currentexponent-addexponent))
-	if currentexponent < addexponent:
-		currentvalue = addvalue
+	if currentexponent < addexponent && addexponent >=3:
+		currentvalue = 10
 		currentexponent = addexponent
+	if currentexponent < addexponent && addexponent < 3:
+		currentvalue = 10
+		currentexponent = 3
 	if currentexponent == addexponent:
 		currentvalue += addvalue
 	
@@ -117,12 +125,11 @@ func updateUI():
 	else:
 		var mymoney = money.split('e')
 		text = "%.2f" % float(mymoney[0]) + 'e' + mymoney[1] + " Flame"
-	get_parent().get_node("Currency2").text = str(moneyPerSec) + " Flame"
+	get_parent().get_node("Currency2").text = str(moneyPerClick) + " Flame"
 
 
 func _on_Clicker_pressed():
 	money = changeMoney(money,moneyPerClick,"Click")
-	print(moneyPerClick)
 	updateUI()
 	pass
 
@@ -132,3 +139,7 @@ func _on_Timer_timeout():
 	updateUI()
 	pass
 
+
+
+func _on_LineEdit_text_entered(new_text):
+	money = new_text

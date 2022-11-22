@@ -34,10 +34,10 @@ func saveall():
 	for key in parseData:
 		alldata[key] = parseData[key]
 	
-	#parseData = get_node("UpgradeTab/Second").save()
+	parseData = get_node("UpgradeTab/Second/Choice1").save()
 	
-	#for key in parseData:
-	#	alldata[key] = parseData[key]
+	for key in parseData:
+		alldata[key] = parseData[key]
 	
 	#parseData = get_node("UpgradeTab/Third").save()
 	

@@ -1,14 +1,20 @@
 extends Panel
 
 var game_data = {
-	"permission" : "1"
+	"permission" : "1",
+	"flint" : "0",
+	"buildingA1" : "1"
 }
 
 var permission
+var flint
+var buildingA1
 
 func save():
 	if permission:
 		game_data.permission = permission
+		game_data.flint = flint
+		game_data.buildingA1 = buildingA1
 	return game_data
 
 func loadsave(data):
@@ -17,6 +23,8 @@ func loadsave(data):
 func _ready():
 	get_tree().root.get_node("Screen").loadall()
 	permission = game_data.permission
+	flint = game_data.flint
+	buildingA1 = game_data.buildingA1
 	self.hide()
 	get_node("First").hide()
 	get_node("First/Choice").hide()
@@ -43,6 +51,9 @@ func updatePermission():
 		if int(permission) >= 2 && int(get_node("First").choice) > 0:
 			get_node("First/Choice").show()
 			get_node("Second").show()
+			get_parent().get_node("Shop").game_data.choice = get_node("First").choice
+			get_parent().get_node("Shop").permission = "2"
+			get_parent().get_node("Shop").updatePermission()
 			if int(get_node("First").choice) == 1:
 				get_node("Second/Choice1").show()
 			if int(get_node("First").choice) == 2:
@@ -58,16 +69,35 @@ func updatePermission():
 func _on_Main_pressed():
 	self.hide()
 
+
 func getClick(amount, need):
 	var node = get_parent().get_node("TopBar/Currency")
 	var click = "1";
+	if int(need) == 1:
+		flint = amount
+	if int(need) == 10:
+		buildingA1 = amount
 	if int(get_node("First").clickUpgrades[0][1]) == 1:
 		click = node.changeMoney(click,"10","Misc")
 	if int(get_node("First").clickUpgrades[1][1]) == 1:
 		click = node.changeMoney(click,"100","Misc")
-	if int(get_node("First").clickUpgrades[2][1]) == 1 && int(need) >= 1:
-		click = node.changeMoney(click,amount,"Misc")
-
+	if int(get_node("First").clickUpgrades[2][1]) == 1:
+		click = node.changeMoney(click,flint,"Misc")
+	
+	if int(get_node("Second/Choice1").upgrades2[1][1]) > 0:
+		click = node.changeMoney(click, get_parent().get_node("TopBar/Currency").moneyPerSec, "InverseSecond")
+	if int(get_node("Second/Choice1").upgrades2[0][1]) > 0:
+		for _i in range(get_node("Second/Choice1").upgrades2[0][1]):
+			click = node.changeMoney(click,click,"Misc")
+	
+	if int(buildingA1) > 1:
+		if 'e' in click:
+			click = click.split('e')
+			click[0] = String(float(click[0]) * amount)
+			click = getScientificNotation(click[0]+'e'+click[1])
+		else:
+			click = getScientificNotation(float(click) * amount)
+	
 	node.moneyPerClick = click
 
 func updateUI():
@@ -129,11 +159,12 @@ func resolveUpgrade(array, index, section):
 	if "Click" in section:
 		get_node("BottomBar/Info Tab").setMiscText(section,index)
 		getClick(0,999)
-	else:
-		if "Choice" in section:
-			pass
-		else:
-			get_node("BottomBar/Info Tab").setText(section,index)
+	if "Choice" in section and !("Second" in section):
+		pass
+	if "First" in section and !("Click" in section) and !("Choice" in section):
+		get_node("BottomBar/Info Tab").setText(section,index)
+	if "Second" in section:
+		get_node("BottomBar/Info Tab").setMiscText2(section,index)
 	get_parent().get_node("Shop").updateValues()
 	updateUI()
 	updatePermission()

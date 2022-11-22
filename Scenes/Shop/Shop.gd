@@ -21,19 +21,19 @@ func loadsave(data):
 	game_data = data
 
 func updatePermission():
-	if int(permission) == 1:
+	if int(permission) > 0:
 		get_node("Building1").show()
 		get_node("Building2").show()
 		get_node("Building3").show()
 		get_node("Building4").show()
-		if int(permission) == 2:
+		if int(permission) > 1:
 			if int(game_data.choice) == 1:
 				get_node("Building5A").show()
 				get_node("Building6A").show()
 			if int(game_data.choice) == 2:
 				get_node("Building5B").show()
 				get_node("Building6B").show()
-			if int(permission) == 3:
+			if int(permission) > 2:
 				get_node("Building7").show()
 				get_node("Building8").show()
 
@@ -78,8 +78,16 @@ func computePS():
 			for _j in range(int(buildings[i][0])):
 				profit = get_parent().get_node("TopBar/Currency").changeMoney(profit,realPayouts[i],"Building")
 		if i == 0:
-			get_parent().get_node("UpgradeTab").getClick(profit,realPayouts[i])
+			get_parent().get_node("UpgradeTab").getClick(profit,1)
 		get_parent().get_node("TopBar/Currency").moneyPerSec = profit
+
+func choice1Buildings():
+	var adder = float(1.00)
+	if int(game_data.choice) == 1:
+		for _i in range(buildings[4][0]):
+			adder *= 1.03
+	print(adder)
+	get_parent().get_node("UpgradeTab").getClick(adder, 10)
 
 func resolveAcquisition(array):
 	var newVal
@@ -152,11 +160,9 @@ func _on_Button3_pressed():
 func _on_Button4_pressed():
 	resolveAcquisition(buildings[3])
 
-func _on_Button5_pressed():
+func _on_Button5A_pressed():
 	resolveAcquisition(buildings[4])
-
-func _on_Button6_pressed():
-	resolveAcquisition(buildings[5])
+	choice1Buildings()
 
 func _on_Button7_pressed():
 	resolveAcquisition(buildings[6])
@@ -185,3 +191,4 @@ func getScientificNotation(n):
 			new[0] = String(float(new[0]) * 10)
 			new[1] = String(int(new[1]) - 1)
 		return String(new[0]) + 'e' + String(new[1])
+

@@ -36,6 +36,22 @@ func setMiscText(search, index):
 	else:
 		self.text = "This upgrade has already been bought."
 
+func setMiscText2(search, index):
+	search = search.split(" ")[0]
+	var info = int(get_parent().get_parent().get_node(search).upgrades2[index][1])
+	
+	if(info < 5):
+		var price = get_parent().get_parent().getScientificNotation(get_parent().get_parent().get_node("Second/Choice1").upgrades2[index][0])
+		if "e" in price:
+			price = price.split("e")
+			price =  "%.2f" % float(price[0]) + 'e' + price[1]
+		if index == 0:
+			self.text = "Channel your control over the Ember, doubling your profits for " + price + " Flame"
+		if index == 1:
+			self.text = "Make use of the lesser, passive production, borrowing its energy tenfold and using it for yourself..\nPrice: " + price + " Flame"
+	else:
+		self.text = "You've already mastered this aspect of the Ember."
+
 func setChoiceText(index):
 	var choice = get_parent().get_parent().get_node("First").choice
 	if choice == "0":
@@ -51,6 +67,10 @@ func setChoiceText(index):
 			self.text += "Dear Partner."
 
 func _on_First_mouse_exited():
+	get_parent().get_node("Main").show()
+	self.hide()
+
+func _on_Second_mouse_exited():
 	get_parent().get_node("Main").show()
 	self.hide()
 
@@ -107,5 +127,13 @@ func _on_Choice2_mouse_entered():
 	self.show()
 
 
-func _on_Button_mouse_entered():
-	pass # Replace with function body.
+func _on_Choice1A1_mouse_entered():
+	get_parent().get_node("Main").hide()
+	setMiscText2("Second/Choice1",0)
+	self.show()
+
+
+func _on_Choice1A2_mouse_entered():
+	get_parent().get_node("Main").hide()
+	setMiscText2("Second/Choice1",1)
+	self.show()
