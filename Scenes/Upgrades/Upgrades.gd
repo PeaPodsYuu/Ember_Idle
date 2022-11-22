@@ -43,10 +43,17 @@ func updatePermission():
 		if int(permission) >= 2 && int(get_node("First").choice) > 0:
 			get_node("First/Choice").show()
 			get_node("Second").show()
+			if int(get_node("First").choice) == 1:
+				get_node("Second/Choice1").show()
+			if int(get_node("First").choice) == 2:
+				get_node("Second/Choice2").show()
 			if int(permission) >= 3:
 				get_node("Third").show()
 				if int(permission) >= 4:
 					get_node("Secret").show()
+		else:
+			if int(permission) >= 2:
+				get_node("First/Choice").show()
 
 func _on_Main_pressed():
 	self.hide()
@@ -122,10 +129,11 @@ func resolveUpgrade(array, index, section):
 	if "Click" in section:
 		get_node("BottomBar/Info Tab").setMiscText(section,index)
 		getClick(0,999)
-	if "Choice" in section:
-		pass
 	else:
-		get_node("BottomBar/Info Tab").setText(section,index)
+		if "Choice" in section:
+			pass
+		else:
+			get_node("BottomBar/Info Tab").setText(section,index)
 	get_parent().get_node("Shop").updateValues()
 	updateUI()
 	updatePermission()

@@ -1,7 +1,7 @@
 extends Panel
 
 var game_data = {
-	"buildings" : [["0","15","1"],["0","300","3"],["0","1500","10"],["0","9500","40"],["0","50000","0"],["0","3211230","0"],["0","123456789","0"],["0","99999999999","0"]],
+	"buildings" : [["0","15","1"],["0","300","3"],["0","1500","10"],["0","9500","40"],["0","50000","0"],["0","3211230","0"],["0","50000","0"],["0","3211230","0"],["0","123456789","0"],["0","99999999999","0"]],
 	"realPayouts" : ["1","3","10","40"],
 	"permission" : "1"
 }
@@ -27,8 +27,12 @@ func updatePermission():
 		get_node("Building3").show()
 		get_node("Building4").show()
 		if int(permission) == 2:
-			get_node("Building5").show()
-			get_node("Building6").show()
+			if int(game_data.choice) == 1:
+				get_node("Building5A").show()
+				get_node("Building6A").show()
+			if int(game_data.choice) == 2:
+				get_node("Building5B").show()
+				get_node("Building6B").show()
 			if int(permission) == 3:
 				get_node("Building7").show()
 				get_node("Building8").show()

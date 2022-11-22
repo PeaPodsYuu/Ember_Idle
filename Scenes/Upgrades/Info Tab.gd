@@ -37,7 +37,7 @@ func setMiscText(search, index):
 		self.text = "This upgrade has already been bought."
 
 func setChoiceText(index):
-	var choice = get_parent().get_parent().permission
+	var choice = get_parent().get_parent().get_node("First").choice
 	if choice == "0":
 		if index == 0:
 			self.text = "Refine your control over the unwieldy Ember, with plans to lead your people to prosperity.\nFrom now on, you swear that the fire will only grow at your command, rather than on its own.\nThis commitment will cost 10e6 Flame."

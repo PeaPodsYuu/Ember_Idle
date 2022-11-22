@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/Upgrades/First.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Upgrades/Info Tab.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/Upgrades/Upgrades.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Upgrades/Second.gd" type="Script" id=4]
 
 [sub_resource type="StyleBoxFlat" id=1]
 
@@ -92,12 +93,13 @@ margin_top = 40.0
 margin_right = 560.0
 margin_bottom = 210.0
 
-[node name="Second" type="Panel" parent="."]
+[node name="Second" type="Panel" parent="." groups=["SaveNode"]]
 margin_left = 75.0
 margin_top = 425.0
 margin_right = 675.0
 margin_bottom = 675.0
 custom_styles/panel = SubResource( 1 )
+script = ExtResource( 4 )
 
 [node name="Choice1" type="Panel" parent="Second"]
 margin_right = 600.0
