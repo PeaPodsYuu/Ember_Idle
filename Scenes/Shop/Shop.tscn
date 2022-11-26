@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Shop/Shop.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/Shop/Price.gd" type="Script" id=2]
 
 [sub_resource type="StyleBoxFlat" id=1]
 
@@ -46,7 +45,6 @@ custom_fonts/font = SubResource( 3 )
 text = "Flint and Steel"
 align = 1
 valign = 1
-script = ExtResource( 2 )
 
 [node name="Button" type="Button" parent="Building1"]
 margin_left = 230.0

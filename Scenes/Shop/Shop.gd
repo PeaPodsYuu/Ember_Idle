@@ -21,6 +21,9 @@ func loadsave(data):
 	game_data = data
 
 func updatePermission():
+	for child in self.get_children():
+		if "Building" in child.name || "Ascension" in child.name:
+			child.hide()
 	if int(permission) > 0:
 		get_node("Building1").show()
 		get_node("Building2").show()
@@ -45,9 +48,6 @@ func _ready():
 	for i in range(8):
 		for j in range(3):
 			buildings[i][j] = getScientificNotation(buildings[i][j])
-	for child in self.get_children():
-		if "Building" in child.name || "Ascension" in child.name:
-			child.hide()
 	updatePermission()
 	updateUI()
 	get_node(".").hide()

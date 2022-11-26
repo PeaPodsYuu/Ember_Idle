@@ -34,6 +34,11 @@ func _ready():
 	updatePermission()
 
 func updatePermission():
+	get_node("First").hide()
+	get_node("First/Choice").hide()
+	get_node("Second").hide()
+	get_node("Second/Choice1").hide()
+	get_node("Second/Choice2").hide()
 	var ok = 1
 	for i in get_node("First").upgrades:
 		if int(i[1]) != 5:
