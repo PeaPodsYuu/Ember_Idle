@@ -89,3 +89,7 @@ func _on_Upgrades_pressed():
 func _on_Timer_timeout():
 	saveall()
 	pass
+
+func _input(event):
+	if Input.is_key_pressed(KEY_ESCAPE):
+		get_tree().quit()

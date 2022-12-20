@@ -125,7 +125,7 @@ func updateUI():
 	else:
 		var mymoney = money.split('e')
 		text = "%.2f" % float(mymoney[0]) + 'e' + mymoney[1] + " Flame"
-	get_parent().get_node("Currency2").text = str(moneyPerClick) + " Flame"
+	get_parent().get_node("Currency2").text = getScientificNotation(moneyPerSec) + " Flame"
 
 
 func _on_Clicker_pressed():
