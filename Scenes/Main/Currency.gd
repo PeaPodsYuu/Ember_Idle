@@ -10,7 +10,7 @@ var money
 var moneyPerClick
 var moneyPerSec
 var _timer = null
-var _saveTimer = null
+var _longTimer = null
 
 func save():
 	if money:
@@ -27,7 +27,7 @@ func _ready():
 	money = game_data.money
 	moneyPerClick = game_data.moneyPerClick
 	moneyPerSec = game_data.moneyPerSec
-	updateUI()
+
 	
 	_timer = Timer.new()
 	add_child(_timer)
@@ -35,6 +35,13 @@ func _ready():
 	_timer.set_wait_time(0.1)
 	_timer.set_one_shot(false)
 	_timer.start()
+	
+	_longTimer = Timer.new()
+	add_child(_longTimer)
+	_longTimer.connect("timeout", self, "_on_LongTimer_timeout")
+	_longTimer.set_wait_time(1)
+	_longTimer.set_one_shot(false)
+	_longTimer.start()
 
 func getScientificNotation(n):
 	n = String(n)
@@ -93,6 +100,8 @@ func changeMoney(target,n,type):
 			addexponent += 2
 		else:
 			addvalue = float(addvalue) * 100.00
+	if type == "Multiply":
+		currentvalue = float(currentvalue) * float(n)
 	
 	if currentexponent > addexponent:
 		currentvalue += addvalue / pow(10, (currentexponent-addexponent))
@@ -125,11 +134,29 @@ func updateUI():
 	else:
 		var mymoney = money.split('e')
 		text = "%.2f" % float(mymoney[0]) + 'e' + mymoney[1] + " Flame"
-	get_parent().get_node("Currency2").text = getScientificNotation(moneyPerSec) + " Flame"
+	get_parent().get_node("Currency2").text = getScientificNotation(moneyPerSec) + " Flame / s"
+	var temp = changeMoney(moneyPerClick,(1+float(get_parent().get_parent().get_node("Shop").buildings[4][0])/10),"Multiply")
+	temp = changeMoney(temp,changeMoney(moneyPerSec,float(get_parent().get_parent().get_node("Shop").buildings[5][0])/3,"Multiply"),"Misc")
+	if !('e' in temp):
+		temp = float(temp) - 1
+		get_parent().get_node("Currency3").text = "%.2f" % float(temp) + " Flame / click"
+	else:
+		temp = getScientificNotation(temp).split('e')
+		get_parent().get_node("Currency3").text = "%.2f" % float(temp[0]) + 'e' + temp[1] + " Flame / click"
 
 
 func _on_Clicker_pressed():
-	money = changeMoney(money,moneyPerClick,"Click")
+	var temp = changeMoney(moneyPerClick,(1+float(get_parent().get_parent().get_node("Shop").buildings[4][0])/10),"Multiply")
+	temp = changeMoney(temp,changeMoney(moneyPerSec,float(get_parent().get_parent().get_node("Shop").buildings[5][0])/3,"Multiply"),"Misc")
+	if !('e' in temp):
+		temp = float(temp) - 1
+	var crit = get_parent().get_parent().get_node("UpgradeTab/Second/Choice1").upgrades2[3][1]
+	var random = rand_range(1,100)
+	if int(random) <= int(crit):
+		money = changeMoney(money,changeMoney(temp,100,"Multiply"),"Click")
+		print("CRIT")
+	else:
+		money = changeMoney(money,temp,"Click")
 	updateUI()
 	pass
 
@@ -139,6 +166,16 @@ func _on_Timer_timeout():
 	updateUI()
 	pass
 
+func _on_LongTimer_timeout():
+	var extraAdder = get_parent().get_parent().get_node("UpgradeTab/Second/Choice1").upgrades2[2][1]
+	if int(extraAdder) > 0:
+		money = changeMoney(money,changeMoney(moneyPerClick,int(extraAdder)*4,"Multiply"),"Misc")
+	var flintAdder = get_parent().get_parent().get_node("UpgradeTab/Second/Choice1").upgrades2[4][1]
+	var shopNode = get_parent().get_parent().get_node("Shop")
+	if int(flintAdder) > 0:
+		shopNode.buildings[0][0] = changeMoney(shopNode.buildings[0][0], flintAdder, "Misc")
+		shopNode.computePS()
+		shopNode.updateUI()
 
 
 func _on_LineEdit_text_entered(new_text):

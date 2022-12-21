@@ -80,8 +80,6 @@ func getClick(amount, need):
 	var click = "1";
 	if int(need) == 1:
 		flint = amount
-	if int(need) == 10:
-		buildingA1 = amount
 	if int(get_node("First").clickUpgrades[0][1]) == 1:
 		click = node.changeMoney(click,"10","Misc")
 	if int(get_node("First").clickUpgrades[1][1]) == 1:
@@ -94,15 +92,7 @@ func getClick(amount, need):
 	if int(get_node("Second/Choice1").upgrades2[0][1]) > 0:
 		for _i in range(get_node("Second/Choice1").upgrades2[0][1]):
 			click = node.changeMoney(click,click,"Misc")
-	
-	if int(buildingA1) > 1:
-		if 'e' in click:
-			click = click.split('e')
-			click[0] = String(float(click[0]) * amount)
-			click = getScientificNotation(click[0]+'e'+click[1])
-		else:
-			click = getScientificNotation(float(click) * amount)
-	
+
 	node.moneyPerClick = click
 
 func updateUI():

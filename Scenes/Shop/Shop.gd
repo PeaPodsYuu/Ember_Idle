@@ -1,7 +1,7 @@
 extends Panel
 
 var game_data = {
-	"buildings" : [["0","15","1"],["0","300","3"],["0","1500","10"],["0","9500","40"],["0","50000","0"],["0","3211230","0"],["0","50000","0"],["0","3211230","0"],["0","123456789","0"],["0","99999999999","0"]],
+	"buildings" : [["0","15","1"],["0","300","3"],["0","1500","10"],["0","9500","40"],["0","50000","0"],["0","3211230","0"],["0","123456789","0"],["0","99999999999","0"]],
 	"realPayouts" : ["1","3","10","40"],
 	"permission" : "1"
 }
@@ -81,13 +81,7 @@ func computePS():
 			get_parent().get_node("UpgradeTab").getClick(profit,1)
 		get_parent().get_node("TopBar/Currency").moneyPerSec = profit
 
-func choice1Buildings():
-	var adder = float(1.00)
-	if int(game_data.choice) == 1:
-		for _i in range(buildings[4][0]):
-			adder *= 1.03
-	print(adder)
-	get_parent().get_node("UpgradeTab").getClick(adder, 10)
+
 
 func resolveAcquisition(array):
 	var newVal
@@ -162,7 +156,9 @@ func _on_Button4_pressed():
 
 func _on_Button5A_pressed():
 	resolveAcquisition(buildings[4])
-	choice1Buildings()
+
+func _on_Button6A_pressed():
+	resolveAcquisition(buildings[5])
 
 func _on_Button7_pressed():
 	resolveAcquisition(buildings[6])
@@ -191,4 +187,5 @@ func getScientificNotation(n):
 			new[0] = String(float(new[0]) * 10)
 			new[1] = String(int(new[1]) - 1)
 		return String(new[0]) + 'e' + String(new[1])
+
 

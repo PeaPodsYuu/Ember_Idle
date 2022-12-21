@@ -169,35 +169,6 @@ margin_top = 115.0
 margin_right = 430.0
 margin_bottom = 175.0
 
-[node name="Building5B" type="Panel" parent="."]
-margin_left = 555.0
-margin_top = 275.0
-margin_right = 1035.0
-margin_bottom = 475.0
-custom_styles/panel = SubResource( 1 )
-
-[node name="Icon" type="Panel" parent="Building5B"]
-margin_left = 25.0
-margin_top = 25.0
-margin_right = 184.0
-margin_bottom = 175.0
-
-[node name="Price" type="Label" parent="Building5B"]
-margin_left = 184.0
-margin_top = 25.0
-margin_right = 480.0
-margin_bottom = 115.0
-custom_fonts/font = SubResource( 3 )
-text = "Building Name"
-align = 1
-valign = 1
-
-[node name="Button" type="Button" parent="Building5B"]
-margin_left = 230.0
-margin_top = 115.0
-margin_right = 430.0
-margin_bottom = 175.0
-
 [node name="Building6A" type="Panel" parent="."]
 margin_left = 555.0
 margin_top = 475.0
@@ -222,35 +193,6 @@ align = 1
 valign = 1
 
 [node name="Button" type="Button" parent="Building6A"]
-margin_left = 230.0
-margin_top = 115.0
-margin_right = 430.0
-margin_bottom = 175.0
-
-[node name="Building6B" type="Panel" parent="."]
-margin_left = 555.0
-margin_top = 275.0
-margin_right = 1035.0
-margin_bottom = 475.0
-custom_styles/panel = SubResource( 1 )
-
-[node name="Icon" type="Panel" parent="Building6B"]
-margin_left = 25.0
-margin_top = 25.0
-margin_right = 184.0
-margin_bottom = 175.0
-
-[node name="Price" type="Label" parent="Building6B"]
-margin_left = 184.0
-margin_top = 25.0
-margin_right = 480.0
-margin_bottom = 115.0
-custom_fonts/font = SubResource( 3 )
-text = "Building Name"
-align = 1
-valign = 1
-
-[node name="Button" type="Button" parent="Building6B"]
 margin_left = 230.0
 margin_top = 115.0
 margin_right = 430.0
@@ -338,9 +280,7 @@ text = "Main"
 [connection signal="pressed" from="Building3/Button" to="." method="_on_Button3_pressed"]
 [connection signal="pressed" from="Building4/Button" to="." method="_on_Button4_pressed"]
 [connection signal="pressed" from="Building5A/Button" to="." method="_on_Button5A_pressed"]
-[connection signal="pressed" from="Building5B/Button" to="." method="_on_Button5_pressed"]
-[connection signal="pressed" from="Building6A/Button" to="." method="_on_Button6_pressed"]
-[connection signal="pressed" from="Building6B/Button" to="." method="_on_Button5_pressed"]
+[connection signal="pressed" from="Building6A/Button" to="." method="_on_Button6A_pressed"]
 [connection signal="pressed" from="Building7/Button" to="." method="_on_Button7_pressed"]
 [connection signal="pressed" from="Building8/Button" to="." method="_on_Button8_pressed"]
 [connection signal="pressed" from="BottomBar/Main" to="." method="_on_Main_pressed"]

@@ -41,14 +41,21 @@ func setMiscText2(search, index):
 	var info = int(get_parent().get_parent().get_node(search).upgrades2[index][1])
 	
 	if(info < 5):
+		info = String(info)
 		var price = get_parent().get_parent().getScientificNotation(get_parent().get_parent().get_node("Second/Choice1").upgrades2[index][0])
 		if "e" in price:
 			price = price.split("e")
 			price =  "%.2f" % float(price[0]) + 'e' + price[1]
 		if index == 0:
-			self.text = "Channel your control over the Ember, doubling your profits for " + price + " Flame"
+			self.text = "Channel your control over the Ember, doubling your profits for " + price + " Flame\nLevel: " + info + "/5"
 		if index == 1:
-			self.text = "Make use of the lesser, passive production, borrowing its energy tenfold and using it for yourself..\nPrice: " + price + " Flame"
+			self.text = "Make use of the lesser, passive production, borrowing its energy tenfold and using it for yourself.\nPrice: " + price + " Flame\nLevel: " + info + "/5"
+		if index == 2:
+			self.text = "Wash your hands in ash left over by the flame, staying in touch with it even when not directly interacting with it.\nGain four times Flame per Click once every second passively. Every upgrade adds and extra x4 to this.\nPrice: " + price + " Flame\nLevel: " + info + "/5"
+		if index == 3:
+			self.text = "Everytime you bolster the flame, there is a 1% chance that your interaction is a hundred times stronger. Every upgrade increases chance by 1%.\nPrice: " + price + " Flame\nLevel: " + info + "/5"
+		if index == 4:
+			self.text = "Create Flint 'n' Steel every second without raising it's price, thus ampliyfying your per click power as well!\nYou gain as many buildings per second as you possess levels of this upgrade.\nPrice: " + price + " Flame\nLevel: " + info + "/5"
 	else:
 		self.text = "You've already mastered this aspect of the Ember."
 
@@ -56,9 +63,9 @@ func setChoiceText(index):
 	var choice = get_parent().get_parent().get_node("First").choice
 	if choice == "0":
 		if index == 0:
-			self.text = "Refine your control over the unwieldy Ember, with plans to lead your people to prosperity.\nFrom now on, you swear that the fire will only grow at your command, rather than on its own.\nThis commitment will cost 10e6 Flame."
+			self.text = "Refine your control over the unwieldy Ember, with plans to lead your people to prosperity.\nFrom now on, you swear that the fire will only grow at your command, rather than on its own.\nThis commitment will cost 50e5 Flame."
 		if index == 1:
-			self.text = "Allow the Ember to guide your movements, having it spread larger and brighter. What a beautiful sight!.\nFrom now on, you take the backseat and allow the flames to engulf as they will..\nThis commitment will cost 10e6 Flame."
+			self.text = "Allow the Ember to guide your movements, having it spread larger and brighter. What a beautiful sight!.\nFrom now on, you take the backseat and allow the flames to engulf as they will..\nThis commitment will cost 50e5 Flame.\n[NOT AVAILABLE IN DEMO, DO NOT CHOOSE]"
 	else:
 		self.text = "You've already made your choice.\nYou are the Ember's "
 		if choice == "1":
@@ -136,4 +143,46 @@ func _on_Choice1A1_mouse_entered():
 func _on_Choice1A2_mouse_entered():
 	get_parent().get_node("Main").hide()
 	setMiscText2("Second/Choice1",1)
+	self.show()
+
+
+func _on_Choice1A3_mouse_entered():
+	get_parent().get_node("Main").hide()
+	setMiscText2("Second/Choice1",2)
+	self.show()
+
+
+func _on_Choice1A4_mouse_entered():
+	get_parent().get_node("Main").hide()
+	setMiscText2("Second/Choice1",3)
+	self.show()
+
+
+func _on_Choice1A5_mouse_entered():
+	get_parent().get_node("Main").hide()
+	setMiscText2("Second/Choice1",4)
+	self.show()
+
+
+func _on_Choice1A6_mouse_entered():
+	get_parent().get_node("Main").hide()
+	setMiscText2("Second/Choice1",5)
+	self.show()
+
+
+func _on_Choice1A7_mouse_entered():
+	get_parent().get_node("Main").hide()
+	setMiscText2("Second/Choice1",6)
+	self.show()
+
+
+func _on_Choice1A8_mouse_entered():
+	get_parent().get_node("Main").hide()
+	setMiscText2("Second/Choice1",7)
+	self.show()
+
+
+func _on_Choice1A9_mouse_entered():
+	get_parent().get_node("Main").hide()
+	setMiscText2("Second/Choice1",8)
 	self.show()
