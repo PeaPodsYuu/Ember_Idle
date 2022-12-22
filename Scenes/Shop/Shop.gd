@@ -79,6 +79,9 @@ func computePS():
 				profit = get_parent().get_node("TopBar/Currency").changeMoney(profit,realPayouts[i],"Building")
 		if i == 0:
 			get_parent().get_node("UpgradeTab").getClick(profit,1)
+		var multiplier = get_parent().get_node("UpgradeTab/Second/Choice1").upgrades2[5][1]
+		if int(multiplier) > 1:
+			profit = get_parent().get_node("TopBar/Currency").changeMoney(profit,1+(float(multiplier)/4),"Multiply")
 		get_parent().get_node("TopBar/Currency").moneyPerSec = profit
 
 

@@ -53,9 +53,26 @@ func setMiscText2(search, index):
 		if index == 2:
 			self.text = "Wash your hands in ash left over by the flame, staying in touch with it even when not directly interacting with it.\nGain four times Flame per Click once every second passively. Every upgrade adds and extra x4 to this.\nPrice: " + price + " Flame\nLevel: " + info + "/5"
 		if index == 3:
-			self.text = "Everytime you bolster the flame, there is a 1% chance that your interaction is a hundred times stronger. Every upgrade increases chance by 1%.\nPrice: " + price + " Flame\nLevel: " + info + "/5"
+			self.text = "Everytime you bolster the flame, there is a 1% chance that your interaction is a hundred times stronger.\nEvery upgrade increases chance by 1%.\nPrice: " + price + " Flame\nLevel: " + info + "/5"
 		if index == 4:
 			self.text = "Create Flint 'n' Steel every second without raising it's price, thus ampliyfying your per click power as well!\nYou gain as many buildings per second as you possess levels of this upgrade.\nPrice: " + price + " Flame\nLevel: " + info + "/5"
+		if index == 5:
+			self.text = "Raise your passive production by 25% per upgrade level, by attuning yourself to the Ember.\nPrice: " + price + " Flame\nLevel: " + info + "/5"
+		if index == 6:
+			self.text = "Every critical strike will create one Temple of Flame.\nLeveling up this ability will create one extra temple per critical strike.\nPrice: " + price + " Flame\nLevel: " + info + "/5"
+		if index == 7:
+			self.text = "Unleash your power fully, attuning your "
+			if int(info) == 0:
+				self.text += "left arm"
+			if int(info) == 1:
+				self.text += "right arm"
+			if int(info) == 2:
+				self.text += "left leg"
+			if int(info) == 3:
+				self.text += "right leg"
+			if int(info) == 4:
+				self.text += "entire body"
+			self.text += " with the flame, setting it on fire.\nThis will improve your clicking power by three whole exponents per upgrade.\nPrice: " + price + " Flame\nLevel: " + info + "/5"
 	else:
 		self.text = "You've already mastered this aspect of the Ember."
 
